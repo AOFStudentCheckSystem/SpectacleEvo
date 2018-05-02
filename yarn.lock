@@ -3186,17 +3186,17 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framework7-icons@0.8.9:
-  version "0.8.9"
-  resolved "https://registry.npmjs.org/framework7-icons/-/framework7-icons-0.8.9.tgz#af94a6051be659f3f7b9d873fba6040c8fe72769"
+framework7-icons@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/framework7-icons/-/framework7-icons-0.9.1.tgz#01f089ce9f71eae112f516630b17009929a8b384"
 
 framework7-vue@0.9.4:
   version "0.9.4"
   resolved "https://registry.npmjs.org/framework7-vue/-/framework7-vue-0.9.4.tgz#5916ab2f0d66250ca397df6faefa88c7d3a36e77"
 
-framework7@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/framework7/-/framework7-1.6.0.tgz#dfd981708240767a5eb3fe8419078c83b8739b99"
+framework7@1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/framework7/-/framework7-1.6.5.tgz#a35eacdb3f78d3013c972e5e8cc482f958ca592d"
 
 fresh@0.5.2:
   version "0.5.2"
@@ -4913,9 +4913,9 @@ node-pre-gyp@^0.9.0:
     semver "^5.3.0"
     tar "^4"
 
-node@8.11.1:
+node@^8.11.1:
   version "8.11.1"
-  resolved "https://registry.npmjs.org/node/-/node-8.11.1.tgz#565fdea7b35f0bf7eebefac6c2b88d34141dd0eb"
+  resolved "https://registry.yarnpkg.com/node/-/node-8.11.1.tgz#565fdea7b35f0bf7eebefac6c2b88d34141dd0eb"
   dependencies:
     node-bin-setup "^1.0.0"
 
