@@ -141,9 +141,10 @@
                 await this.$store.dispatch('pullCurrentEvent', {id})
             },
             onRefresh(event, done) {
+                const self = this
                 this.syncLocalEvents().then(() => {
                     done()
-                    this.$forceUpdate()
+                    self.$forceUpdate()
                 }).catch((e) => {
                     console.error(e)
                     done()

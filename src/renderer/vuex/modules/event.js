@@ -406,12 +406,12 @@ const actions = {
 
                         if (element.dirty) {
                             // TODO false unsuccess
-                            const editResult = await api.editEvent(element, element)
-                            if (!editResult.success) {
+                            try {
+                                await api.editEvent(element, element)
+                                console.log('pushed dirty event', element)
+                            } catch (e) {
                                 console.error('failed to push edits for', element)
                                 commit(types.APPEND_BROKEN_EVENT, {broken: element})
-                            } else {
-                                console.log('pushed dirty event', element)
                             }
                         }
 

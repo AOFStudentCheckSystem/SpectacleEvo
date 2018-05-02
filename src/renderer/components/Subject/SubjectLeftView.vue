@@ -99,9 +99,10 @@
                 await this.$store.dispatch('pullCurrentStudent', {id})
             },
             onRefresh(event, done) {
+                const self = this
                 this.refreshStudents().then(() => {
                     done()
-                    this.$forceUpdate()
+                    self.$forceUpdate()
                 }).catch((e) => {
                     console.error(e)
                     done()
@@ -132,7 +133,7 @@
             filteredStudents() {
                 const filter = this.filter
                 return this.filter === '' ? this.students : this.students.filter((student) => {
-                    const fullName = (student.firstName + ' ' + student.lastName + ' ' + student.preferredName).toLowerCase()
+                    const fullName = (student.account.firstName + ' ' + student.account.lastName + ' ' + student.account.preferredName).toLowerCase()
                     return fullName.includes(filter)
                 })
             }

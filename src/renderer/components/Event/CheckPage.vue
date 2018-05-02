@@ -65,15 +65,15 @@
                         <div class="item-content">
                             <div class="item-inner">
                                 <div class="item-title-row">
-                                    <div class="item-title">{{props.item.student.lastName + ', ' +
-                                        props.item.student.firstName}}
+                                    <div class="item-title">{{props.item.student.account.lastName + ', ' +
+                                        props.item.student.account.firstName}}
                                     </div>
                                     <div class="item-after"><span class="badge"
                                                                   :class="props.item.checkInTime >= 0 ? 'color-blue' : 'color-red'">{{props.item.checkInTime >= 0 ? 'Checked' : 'Removed'}}</span>
                                     </div>
                                 </div>
-                                <div class="item-subtitle">{{props.item.student.preferredName ||
-                                    props.item.student.firstName}}
+                                <div class="item-subtitle">{{props.item.student.account.preferredName ||
+                                    props.item.student.account.firstName}}
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                 const filter = this.filter
                 return this.filter === '' ? this.sortedCurrentEventRecords : this.sortedCurrentEventRecords.filter((record) => {
                     const student = record.student
-                    const fullName = (student.firstName + ' ' + student.lastName + ' ' + student.preferredName).toLowerCase()
+                    const fullName = (student.account.firstName + ' ' + student.account.lastName + ' ' + student.account.preferredName).toLowerCase()
                     return fullName.includes(filter)
                 })
             }

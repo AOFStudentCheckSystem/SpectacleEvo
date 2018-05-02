@@ -35,6 +35,7 @@ export default {
         // }
     },
     async editEvent(localEvent, patch) {
+        console.log('editEvent', localEvent, patch)
         return (await http.post('/checkin/event/', {
             eventId: localEvent.id,
             time: patch.time,
@@ -43,14 +44,6 @@ export default {
             status: patch.status
         })).data
     },
-    // async creditEvent (localEvent) {
-    //     return new ActionResult((await http.post('event/credit', {
-    //         eventId: localEvent.id,
-    //         name: localEvent.name,
-    //         time: localEvent.time,
-    //         description: localEvent.description
-    //     })).data)
-    // },
     async sendMail(eventId, emailAddress) {
         return (http.post('/checkin/event/sendmail', {
             eventId: eventId,

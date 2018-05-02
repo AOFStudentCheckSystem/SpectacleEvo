@@ -18,20 +18,20 @@ const mutations = {
         state.currentStudent = student
     },
     [types.PATCH_STUDENT](state, {student, patch}) {
-        if (patch.lastName) {
-            student.lastName = patch.lastName
+        if (patch.account.lastName) {
+            student.account.lastName = patch.account.lastName
         }
-        if (patch.firstName) {
-            student.firstName = patch.firstName
+        if (patch.account.firstName) {
+            student.account.firstName = patch.account.firstName
         }
-        if (patch.preferredName) {
-            student.preferredName = patch.preferredName
+        if (patch.account.preferredName) {
+            student.account.preferredName = patch.account.preferredName
         }
         if (patch.cardSecret !== null && patch.cardSecret !== undefined) {
             student.cardSecret = patch.cardSecret
         }
-        if (patch.email) {
-            student.email = patch.email
+        if (patch.account.email) {
+            student.account.email = patch.account.email
         }
         if (patch.dirty !== null && patch.dirty !== undefined) {
             student.dirty = patch.dirty
@@ -77,11 +77,11 @@ const actions = {
                 const remoteStudent = await api.pullStudent(id)
                 if (!(
                     remoteStudent.idNumber === cachedStudent.idNumber &&
-                    remoteStudent.lastName === cachedStudent.lastName &&
-                    remoteStudent.firstName === cachedStudent.firstName &&
-                    remoteStudent.preferredName === cachedStudent.preferredName &&
+                    remoteStudent.account.lastName === cachedStudent.account.lastName &&
+                    remoteStudent.account.firstName === cachedStudent.account.firstName &&
+                    remoteStudent.account.preferredName === cachedStudent.account.preferredName &&
                     remoteStudent.cardSecret === cachedStudent.cardSecret &&
-                    remoteStudent.email === cachedStudent.email
+                    remoteStudent.account.email === cachedStudent.account.email
                 )) {
                     commit(types.SET_CURRENT_STUDENT, {student: remoteStudent})
                 }

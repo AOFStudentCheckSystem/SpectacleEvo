@@ -15,19 +15,19 @@
             </f7-list-item>
             <f7-list-item>
                 <f7-label>First Name</f7-label>
-                <f7-input type="text" disabled :value="currentStudent.firstName"></f7-input>
+                <f7-input type="text" disabled :value="currentStudent.account.firstName"></f7-input>
             </f7-list-item>
             <f7-list-item>
                 <f7-label>Last Name</f7-label>
-                <f7-input type="text" disabled :value="currentStudent.lastName"></f7-input>
+                <f7-input type="text" disabled :value="currentStudent.account.lastName"></f7-input>
             </f7-list-item>
             <f7-list-item>
                 <f7-label>Preferred Name</f7-label>
-                <f7-input type="text" disabled :value="currentStudent.preferredName"></f7-input>
+                <f7-input type="text" disabled :value="currentStudent.account.preferredName"></f7-input>
             </f7-list-item>
             <f7-list-item>
                 <f7-label>Email</f7-label>
-                <f7-input type="text" disabled :value="currentStudent.email"></f7-input>
+                <f7-input type="text" disabled :value="currentStudent.account.email"></f7-input>
             </f7-list-item>
             <f7-list-item>
                 <f7-label>Card Secret</f7-label>

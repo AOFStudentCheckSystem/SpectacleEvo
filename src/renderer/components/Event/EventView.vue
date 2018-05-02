@@ -106,7 +106,7 @@
                     this.setSidePanel()
                 }
             },
-            'currentEvent.dirty': (newVal) => {
+            'currentEvent.dirty'(newVal) {
                 this.$forceUpdate()
             }
         }

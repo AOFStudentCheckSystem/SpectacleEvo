@@ -40,7 +40,7 @@
                 'currentStudent'
             ]),
             computedTitle() {
-                return this.currentStudent ? this.currentStudent.lastName + ', ' + this.currentStudent.firstName : ''
+                return this.currentStudent ? this.currentStudent.account.lastName + ', ' + this.currentStudent.account.firstName : ''
             }
         },
         methods: {
