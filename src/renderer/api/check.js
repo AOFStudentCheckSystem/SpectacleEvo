@@ -10,6 +10,7 @@ export default {
             .map((json) => new ActivityEventRecord(json))
     },
     async submitRecords(event, records) {
+        console.log('submitRecords', records)
         const result = (await rawHttp.put('/checkin/checkin/submit', {
             targetEvent: event.id,
             recordsToUpload: records.map((recordObj) => {

@@ -4,7 +4,7 @@
 import * as types from '../mutation-types'
 import api from '../../api/event'
 import checkApi from '../../api/check'
-import {ActivityEvent, LocalEvent} from '../../models/event'
+import {ActivityEvent, LocalEvent, EventStatus} from '../../models/event'
 import {ActionResult} from '../../models/result'
 
 const state = {
@@ -193,7 +193,7 @@ const actions = {
                 return
             }
             if (cachedEvent) {
-                if (cachedEvent.status < 2) {
+                if (cachedEvent.status !== EventStatus.COMPLETED) {
                     const localEvent = new LocalEvent(cachedEvent)
                     commit(types.ADD_TO_LOCAL_EVENTS, {localEvent: localEvent})
                     commit(types.SET_CURRENT_EVENT, {event: localEvent})
@@ -254,7 +254,7 @@ const actions = {
             return
         }
 
-        if (currentEvent.status > 1) {
+        if (currentEvent.status === EventStatus.COMPLETED) {
             commit(types.APPEND_BROKEN_EVENT, {broken: currentEvent})
             console.error('the current event is complete')
         }
@@ -292,7 +292,7 @@ const actions = {
         }
     },
     async patchEvent({commit, state, rootState}, {event, patch}) {
-        if (event.status > 1) {
+        if (event.status === EventStatus.COMPLETED) {
             commit(types.APPEND_BROKEN_EVENT, {broken: event})
             console.error('event is complete')
             return
@@ -338,7 +338,7 @@ const actions = {
     async addEventRecord({commit, state, rootState, dispatch}, {record}) {
         const currentEvent = state.currentEvent
 
-        if (currentEvent.status > 1) {
+        if (currentEvent.status === EventStatus.COMPLETED) {
             console.error('the current event is complete')
         }
 
@@ -389,7 +389,7 @@ const actions = {
                             commit(types.APPEND_BROKEN_EVENT, {broken: element})
                             continue
                         }
-                        if (element.status > 1 && element.hasRemote) {
+                        if (element.status === EventStatus.COMPLETED && element.hasRemote) {
                             // commit(types.APPEND_BROKEN_EVENT, {broken: element})
                             // console.error('edited or checked in for completed event')
                             toRemove.push(element)
@@ -405,7 +405,6 @@ const actions = {
                         }
 
                         if (element.dirty) {
-                            // TODO false unsuccess
                             try {
                                 await api.editEvent(element, element)
                                 console.log('pushed dirty event', element)
@@ -415,7 +414,8 @@ const actions = {
                             }
                         }
 
-                        if (element.records && element.records.length > 0 && element.status < 2) {
+                        if (element.records && element.records.length > 0 && element.status !== EventStatus.COMPLETED) {
+                            console.log('uploading records', element.records)
                             const recordResult = await checkApi.submitRecords(element, element.records)
                             if (recordResult) {
                                 toRemove.push(element)

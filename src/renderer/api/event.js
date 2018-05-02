@@ -35,7 +35,7 @@ export default {
         // }
     },
     async editEvent(localEvent, patch) {
-        console.log('editEvent', localEvent, patch)
+        // console.log('editEvent', localEvent, patch)
         return (await http.post('/checkin/event/', {
             eventId: localEvent.id,
             time: patch.time,
