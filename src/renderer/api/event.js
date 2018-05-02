@@ -28,8 +28,8 @@ export default {
         }
 
         // try {
-            const result = (await http.put('/checkin/event/', remoteEvent)).data
-            return result.eventId
+        const result = (await http.put('/checkin/event/', remoteEvent)).data
+        return result.eventId
         // } catch (e) {
         //     return new ActionResult({success: false, error: e})
         // }
