@@ -33,8 +33,8 @@ export class ActivityEventRecord {
     constructor(json) {
         this.student = new Student(json.student)
         // this.event = new Event(json.event)
-        this.signUpTime = json.signUpTime === -1 ? -1 : new Date(json.signUpTime).getTime()
-        this.checkInTime = json.checkInTime === -1 ? -1 : new Date(json.checkInTime).getTime()
+        this.signUpTime = json.signUpTime
+        this.checkInTime = json.checkInTime
     }
 }
 
@@ -56,7 +56,7 @@ export class LocalEvent {
             this.id = String(Math.random())
             this.localId = String(Math.random())
             this.name = ''
-            this.time = new Date().getTime()
+            this.time = moment().unix()
             this.status = EventStatus.FUTURE
             this.description = ''
             this.records = []

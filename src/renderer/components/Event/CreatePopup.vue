@@ -46,6 +46,7 @@
 <script>
     import * as PickerUtil from '../../util/picker'
     import {LocalEvent} from '../../models/event'
+    import moment from 'moment'
 
     const today = new Date()
     export default {
@@ -93,11 +94,11 @@
                 const localEvent = new LocalEvent()
                 localEvent.name = self.name
                 localEvent.description = self.description
-                localEvent.time = new Date(self.calendarValue.year,
+                localEvent.time = moment(new Date(self.calendarValue.year,
                     self.calendarValue.month,
                     self.calendarValue.date,
                     self.pickerValue.hour,
-                    self.pickerValue.minute).getTime()
+                    self.pickerValue.minute)).unix()
                 self.$f7.showIndicator()
                 this.$store.dispatch('createEvent', {
                     event: localEvent

@@ -4,7 +4,6 @@
 import {http} from '../main'
 import {EventPage} from '../models/event_page'
 import {ActivityEvent} from '../models/event'
-import moment from 'moment'
 
 export default {
     async pagedEvents(page, size) {
@@ -23,7 +22,7 @@ export default {
         let remoteEvent = {
             name: localEvent.name,
             status: localEvent.status,
-            time: moment(localEvent.time).unix(),
+            time: localEvent.time,
             description: localEvent.description
         }
 
