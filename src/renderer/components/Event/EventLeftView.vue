@@ -39,9 +39,6 @@
     /*}*/
 </style>
 
-<style>
-</style>
-
 <template>
     <f7-page pull-to-refresh @ptr:refresh="onRefresh">
         <f7-navbar title="Event">
@@ -88,7 +85,7 @@
         <virtual-scroller ref="virtualscroller" id="event-search-list" containerTag="ul" mainTag="div"
                           :class="['list-block', 'media-list', 'event-searchbar-found']"
                           :items="filteredEvents" :itemHeight="63" keyField="id" v-show="filteredEvents.length !== 0">
-            <template scope="props">
+            <template slot-scope="props">
                 <li class="item-link" @click="onClick(props.item.id)" :class="classObjForEvent(props.item)"
                     :key="props.itemKey">
                     <div class="item-content">

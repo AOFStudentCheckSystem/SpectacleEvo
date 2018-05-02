@@ -37,7 +37,7 @@
                                       :class="['list-block', 'media-list', 'empty-card-searchbar-found', 'tablet-inset']"
                                       :items="filteredStudents" :itemHeight="63" keyField="idNumber"
                                       v-show="filteredStudents.length !== 0">
-                        <template scope="props">
+                        <template slot-scope="props">
                             <li class="item-content media-item"
                                 @click="onClick(props.item)"
                                 :key="props.itemKey"

@@ -230,13 +230,13 @@ class ReaderInternal {
         let buffer
 
         if (Array.isArray(apduCommand)) {
-            buffer = new Buffer(apduCommand)
+            buffer = Buffer.from(apduCommand)
         } else if (typeof apduCommand === 'string') {
-            buffer = new Buffer(hexify.toByteArray(apduCommand))
+            buffer = Buffer.from(hexify.toByteArray(apduCommand))
         } else if (Buffer.isBuffer(apduCommand)) {
             buffer = apduCommand
         } else if (typeof apduCommand === 'string') {
-            buffer = new Buffer(hexify.toByteArray(apduCommand))
+            buffer = Buffer.from(hexify.toByteArray(apduCommand))
         } else {
             buffer = apduCommand.toBuffer()
         }

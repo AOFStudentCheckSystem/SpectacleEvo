@@ -58,7 +58,7 @@
                           containerTag="ul" mainTag="div"
                           :class="['list-block', 'media-list', 'check-searchbar-found', 'tablet-inset']"
                           :items="filteredCurrentEventRecords" :itemHeight="63" keyField="id">
-            <template scope="props">
+            <template slot-scope="props">
                 <li class="swipeout"
                     :key="props.itemKey">
                     <div class="swipeout-content">

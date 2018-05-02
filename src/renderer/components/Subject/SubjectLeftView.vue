@@ -60,7 +60,7 @@
                           :class="['list-block', 'media-list', 'student-searchbar-found']"
                           :items="filteredStudents" :itemHeight="63" keyField="idNumber"
                           v-show="filteredStudents.length !== 0">
-            <template scope="props">
+            <template slot-scope="props">
                 <li class="item-content media-item item-link"
                     @click="onClick(props.item.idNumber)"
                     :key="props.itemKey"

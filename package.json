@@ -28,16 +28,15 @@
     "@codetector/pcsclite": "^0.4.19",
     "axios": "^0.16.1",
     "font-awesome": "^4.7.0",
-    "framework7": "^2.2.5",
-    "framework7-icons": "^0.9.1",
-    "framework7-vue": "^2.2.5",
+    "framework7": "1.6.0",
+    "framework7-icons": "0.8.9",
+    "framework7-vue": "0.9.0",
     "hexify": "^1.0.1",
     "moment": "^2.22.1",
-    "vue": "^2.3.3",
+    "vue": "^2.1.10",
     "vue-electron": "^1.0.6",
-    "vue-router": "^2.5.3",
-    "vue-virtual-scroller": "^0.11.7",
-    "vuex": "^2.3.1"
+    "vue-virtual-scroller": "^0.6.1",
+    "vuex": "^2.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

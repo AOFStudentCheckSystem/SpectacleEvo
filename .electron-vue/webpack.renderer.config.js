@@ -142,7 +142,7 @@ let rendererConfig = {
         alias: {
             '@': path.join(__dirname, '../src/renderer'),
             'vue$': 'vue/dist/vue.esm.js',
-            'smartcard': path.join(__dirname, '../src/smartcard')
+            'smartcard': path.join(__dirname, '../src/smartcard/smartcard')
         },
         extensions: ['.js', '.vue', '.json', '.css', '.node']
     },

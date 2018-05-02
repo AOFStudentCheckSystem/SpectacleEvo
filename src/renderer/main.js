@@ -12,6 +12,9 @@ import Framework7Vue from 'framework7-vue'
 // Import F7 iOS Theme Styles
 /* eslint-disable no-unused-vars */
 import Framework7Theme from 'framework7/dist/css/framework7.ios.min.css'
+// Import F7 iOS Theme Styles
+/* eslint-disable no-unused-vars */
+import Framework7ThemeColors from 'framework7/dist/css/framework7.ios.colors.min.css'
 /* OR for Material Theme:
  import Framework7Theme from 'framework7/dist/css/framework7.material.min.css'
  */
