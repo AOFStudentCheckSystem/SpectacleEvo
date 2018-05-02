@@ -124,8 +124,8 @@ const getters = {
             const localEvent = state.localEvents.find((localE) => localE.localId === remoteEvent.id)
             return localEvent || remoteEvent
         })).sort((x, y) => {
-            const xStatus = x.status === 2 ? -1 : x.status
-            const yStatus = y.status === 2 ? -1 : y.status
+            const xStatus = x.status !== EventStatus.COMPLETED ? x.status === EventStatus.BOARDING ? 1 : 0 : -1
+            const yStatus = y.status !== EventStatus.COMPLETED ? y.status === EventStatus.BOARDING ? 1 : 0 : -1
             return xStatus === yStatus ? (y.time - x.time) : yStatus - xStatus
         })
     },

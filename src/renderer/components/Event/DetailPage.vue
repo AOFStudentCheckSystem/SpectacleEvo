@@ -140,11 +140,13 @@
                             if (self.pickerValue.minute !== minute || self.pickerValue.hour !== hour) {
                                 self.pickerValue.minute = minute
                                 self.pickerValue.hour = hour
-                                self.throttledEditTime(self.currentEvent, new Date(this.calendarValue.year,
-                                    this.calendarValue.month,
-                                    this.calendarValue.date,
-                                    this.pickerValue.hour,
-                                    this.pickerValue.minute).getTime())
+                                self.throttledEditTime(self.currentEvent, moment({
+                                    year: self.calendarValue.year,
+                                    month: self.calendarValue.month,
+                                    date: self.calendarValue.date,
+                                    hour: self.pickerValue.hour,
+                                    minute: self.pickerValue.minute
+                                }).unix())
                             }
                         }, date))
                 }
@@ -161,11 +163,13 @@
                                 self.calendarValue.month = month
                                 self.calendarValue.date = date
                                 self.calendarValue.year = year
-                                self.throttledEditTime(self.currentEvent, new Date(this.calendarValue.year,
-                                    this.calendarValue.month,
-                                    this.calendarValue.date,
-                                    this.pickerValue.hour,
-                                    this.pickerValue.minute).getTime())
+                                self.throttledEditTime(self.currentEvent, moment({
+                                    year: self.calendarValue.year,
+                                    month: self.calendarValue.month,
+                                    date: self.calendarValue.date,
+                                    hour: self.pickerValue.hour,
+                                    minute: self.pickerValue.minute
+                                }).unix())
                             }
                         }, date))
                 }
@@ -208,14 +212,14 @@
                         this.$store.dispatch('patchEvent', {
                             event,
                             patch: {
-                                time: moment(time).unix()
+                                time: time
                             }
                         })
                     }
                 }
             },
             pageInit() {
-                this.buildPickers(new Date())
+                this.buildPickers(moment())
             }
         },
         watch: {
@@ -223,17 +227,17 @@
                 if (newVal) {
                     this.name = newVal.name
                     this.description = newVal.description
-                    const date = new Date(moment.unix(newVal.time).valueOf())
-                    const oldDate = oldVal ? new Date(moment.unix(oldVal.time).valueOf()) : null
-                    if (date && (!oldDate || date.getTime() !== oldDate.getTime())) {
+                    const date = moment.unix(newVal.time)
+                    const oldDate = oldVal ? moment.unix(oldVal.time) : null
+                    if (date && (!oldDate || date.unix() !== oldDate.unix())) {
                         this.pickerValue = {
-                            hour: date.getHours(),
-                            minute: date.getMinutes()
+                            hour: date.get('hour'),
+                            minute: date.get('minute')
                         }
                         this.calendarValue = {
-                            year: date.getFullYear(),
-                            month: date.getMonth(),
-                            date: date.getDate()
+                            year: date.get('year'),
+                            month: date.get('month'),
+                            date: date.get('date')
                         }
                         this.buildPickers(date)
                     }

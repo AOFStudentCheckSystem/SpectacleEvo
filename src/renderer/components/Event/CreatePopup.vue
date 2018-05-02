@@ -46,21 +46,22 @@
 <script>
     import * as PickerUtil from '../../util/picker'
     import {LocalEvent} from '../../models/event'
+    import moment from 'moment'
 
-    const today = new Date()
+    const today = moment()
     export default {
         data() {
             return {
                 picker: null,
                 pickerValue: {
-                    hour: today.getHours(),
-                    minute: today.getMinutes()
+                    hour: today.get('hour'),
+                    minute: today.get('minute')
                 },
                 calendar: null,
                 calendarValue: {
-                    year: today.getFullYear(),
-                    month: today.getMonth(),
-                    date: today.getDate()
+                    year: today.get('year'),
+                    month: today.get('month'),
+                    date: today.get('date')
                 },
                 name: '',
                 description: ''
@@ -93,11 +94,13 @@
                 const localEvent = new LocalEvent()
                 localEvent.name = self.name
                 localEvent.description = self.description
-                localEvent.time = new Date(self.calendarValue.year,
-                    self.calendarValue.month,
-                    self.calendarValue.date,
-                    self.pickerValue.hour,
-                    self.pickerValue.minute).getTime()
+                localEvent.time = moment({
+                    year: self.calendarValue.year,
+                    month: self.calendarValue.month,
+                    date: self.calendarValue.date,
+                    hour: self.calendarValue.hour,
+                    minute: self.calendarValue.minute
+                }).unix()
                 self.$f7.showIndicator()
                 this.$store.dispatch('createEvent', {
                     event: localEvent

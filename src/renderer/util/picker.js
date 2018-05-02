@@ -1,18 +1,26 @@
 /**
  * Created by dummy on 4/17/17.
  */
+
+import moment from 'moment'
+
 export const datePicker = (element, container, changeCallback, dateObj) => {
-    const today = dateObj || new Date()
+    // This dateObj should be moment
+    const today = dateObj || moment()
     return {
         input: element,
         // container: container,
         toolbar: false,
         rotateEffect: true,
 
-        value: [today.getMonth(), today.getDate(), today.getFullYear()],
+        value: [today.get('month'), today.get('date'), today.get('year')],
 
         onChange(picker, values, displayValues) {
-            let daysInMonth = new Date(picker.value[2], picker.value[0] + 1, 0).getDate()
+            let daysInMonth = moment({
+                year: picker.value[2],
+                month: picker.value[0] + 1,
+                day: 0
+            }).get('date')
             if (values[1] > daysInMonth) {
                 picker.cols[1].setValue(daysInMonth)
             }
@@ -47,13 +55,15 @@ export const datePicker = (element, container, changeCallback, dateObj) => {
 }
 
 export const timePicker = (element, container, changeCallback, dateObj) => {
-    const today = dateObj || new Date()
+    // moment
+    console.log(dateObj)
+    const today = dateObj || moment()
     return {
         input: element,
         // container: container,
         toolbar: false,
         rotateEffect: true,
-        value: [today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())],
+        value: [today.get('hour'), (today.get('minute') < 10 ? '0' + today.get('minute') : today.get('minute'))],
         formatValue(p, values, displayValues) {
             return displayValues[0] + ':' + values[1]
         },

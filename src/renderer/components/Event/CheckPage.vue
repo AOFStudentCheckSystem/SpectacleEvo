@@ -204,7 +204,7 @@
                             record: new ActivityEventRecord({
                                 student: foundStudent,
                                 signUpTime: -1,
-                                checkInTime: toRemove * new Date().getTime()
+                                checkInTime: toRemove * moment().unix()
                             })
                         })
                         this.$forceUpdate()
@@ -220,7 +220,7 @@
                                         record: new ActivityEventRecord({
                                             student: student,
                                             signUpTime: -1,
-                                            checkInTime: toRemove * new Date().getTime()
+                                            checkInTime: toRemove * moment().unix()
                                         })
                                     })
                                     self.$store.dispatch('patchStudentCardSecret', {
@@ -247,7 +247,7 @@
                                     record: new ActivityEventRecord({
                                         student: student,
                                         signUpTime: -1,
-                                        checkInTime: toRemove * new Date().getTime()
+                                        checkInTime: toRemove * moment().unix()
                                     })
                                 })
                                 self.$forceUpdate()
