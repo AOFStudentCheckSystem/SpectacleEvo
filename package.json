@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "author": "DE_DZ_TBH <peiqial@outlook.com>",
   "description": "Evolved to adapt Gen-3 APIs",
-  "license": null,
+  "license": "GNU GPL v3",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js",
@@ -30,7 +30,7 @@
     "font-awesome": "^4.7.0",
     "framework7": "1.6.0",
     "framework7-icons": "0.8.9",
-    "framework7-vue": "0.9.0",
+    "framework7-vue": "0.9.4",
     "hexify": "^1.0.1",
     "moment": "^2.22.1",
     "vue": "^2.1.10",

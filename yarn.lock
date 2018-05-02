@@ -3190,9 +3190,9 @@ framework7-icons@0.8.9:
   version "0.8.9"
   resolved "https://registry.npmjs.org/framework7-icons/-/framework7-icons-0.8.9.tgz#af94a6051be659f3f7b9d873fba6040c8fe72769"
 
-framework7-vue@0.9.0:
-  version "0.9.0"
-  resolved "https://registry.npmjs.org/framework7-vue/-/framework7-vue-0.9.0.tgz#4c9a68914b1f1c2c7806f6d001dbcbefcde25e07"
+framework7-vue@0.9.4:
+  version "0.9.4"
+  resolved "https://registry.npmjs.org/framework7-vue/-/framework7-vue-0.9.4.tgz#5916ab2f0d66250ca397df6faefa88c7d3a36e77"
 
 framework7@1.6.0:
   version "1.6.0"
