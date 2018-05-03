@@ -21,7 +21,8 @@
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "postinstall": "npm run lint:fix && npm rebuild",
-    "rebuild": "yarn rebuild:pcsclite",
+    "rebuild": "yarn rebuild:pcsclite && yarn rebuild:electron",
+    "rebuild:electron": "./node_modules/.bin/electron-rebuild -f -w '@codetector/pcsclite'",
     "rebuild:pcsclite": "( cd node_modules/@codetector/pcsclite && node-gyp rebuild --runtime=electron --target=1.8.6 --disturl=https://atom.io/download/atom-shell --abi=53 )"
   },
   "dependencies": {
@@ -33,7 +34,6 @@
     "framework7-vue": "0.9.4",
     "hexify": "^1.0.1",
     "moment": "^2.22.1",
-    "node": "^8.11.1",
     "vue": "^2.1.10",
     "vue-electron": "^1.0.6",
     "vue-virtual-scroller": "^0.6.1",
