@@ -44,7 +44,7 @@ export class SignUpSheetInstance {
 export const EMPTY_SIGN_UP_SHEET = new SignUpSheet({
     id: -1,
     name: '',
-    status: -1,
+    status: 'FUTURE',
     events: []
 })
 
