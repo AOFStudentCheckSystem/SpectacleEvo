@@ -14,7 +14,7 @@ export default {
         return new ActionResult((await http.post('auth/register', {email, password})).data)
     },
     async signOut() {
-        await http.post('auth/logout')
+        await http.get('auth/signOut')
     },
     async verify() {
         return new UserToken((await http.post('auth/auth')).data)
