@@ -68,12 +68,16 @@
                                     <div class="item-title">{{props.item.student.account.lastName + ', ' +
                                         props.item.student.account.firstName}}
                                     </div>
-                                    <div class="item-after"><span class="badge"
-                                                                  :class="props.item.checkInTime >= 0 ? 'color-blue' : 'color-red'">{{props.item.checkInTime >= 0 ? 'Checked' : 'Removed'}}</span>
+                                    <div class="item-after">
+                                        <span class="badge" style="margin-right: 0.5em"
+                                              :class="props.item.signUpTime >= 0 ? 'color-green' : 'color-grey'">{{props.item.signUpTime >= 0 ? 'Signed Up' : 'Not Signed Up'}}</span>
+                                        <span class="badge"
+                                              :class="props.item.checkInTime >= 0 ? 'color-blue' : 'color-red'">{{props.item.checkInTime >= 0 ? 'Checked' : 'Removed'}}</span>
                                     </div>
                                 </div>
                                 <div class="item-subtitle">{{props.item.student.account.preferredName ||
                                     props.item.student.account.firstName}}
+
                                 </div>
                             </div>
                         </div>

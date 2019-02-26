@@ -116,6 +116,9 @@ const actions = {
         }
     },
     async patchStudentCardSecret({commit, rootState}, {student, cardSecret}) {
+        if (cardSecret != null) {
+            cardSecret = cardSecret.toUpperCase()
+        }
         if (rootState.auth.offline) {
             commit(types.PATCH_STUDENT, {student, patch: {cardSecret, cardSecretUpdate: true}})
         } else {
