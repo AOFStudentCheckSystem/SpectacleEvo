@@ -18,20 +18,22 @@ const mutations = {
         state.currentStudent = student
     },
     [types.PATCH_STUDENT](state, {student, patch}) {
-        if (patch.account.lastName) {
-            student.account.lastName = patch.account.lastName
-        }
-        if (patch.account.firstName) {
-            student.account.firstName = patch.account.firstName
-        }
-        if (patch.account.preferredName) {
-            student.account.preferredName = patch.account.preferredName
+        if (patch.account) {
+            if (patch.account.lastName) {
+                student.account.lastName = patch.account.lastName
+            }
+            if (patch.account.firstName) {
+                student.account.firstName = patch.account.firstName
+            }
+            if (patch.account.preferredName) {
+                student.account.preferredName = patch.account.preferredName
+            }
+            if (patch.account.email) {
+                student.account.email = patch.account.email
+            }
         }
         if (patch.cardSecret !== null && patch.cardSecret !== undefined) {
             student.cardSecret = patch.cardSecret
-        }
-        if (patch.account.email) {
-            student.account.email = patch.account.email
         }
         if (patch.dirty !== null && patch.dirty !== undefined) {
             student.dirty = patch.dirty
