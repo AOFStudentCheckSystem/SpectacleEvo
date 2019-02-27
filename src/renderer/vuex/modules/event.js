@@ -6,6 +6,7 @@ import api from '../../api/event'
 import checkApi from '../../api/check'
 import {ActivityEvent, LocalEvent, EventStatus} from '../../models/event'
 import {ActionResult} from '../../models/result'
+import {SoundFX, play} from '../../util/play'
 
 const state = {
     events: [],
@@ -336,6 +337,18 @@ const actions = {
         }
     },
     async addEventRecord({commit, state, rootState, dispatch}, {record}) {
+        try {
+            if (record && record.checkInTime < 0) {
+                play(SoundFX.NOT_GOOD)
+            } else if (record.signUpTime < 0) {
+                play(SoundFX.WARN)
+            } else {
+                play(SoundFX.SUCCEED)
+            }
+        } catch (e) {
+            console.warn('cannot play sound')
+        }
+
         const currentEvent = state.currentEvent
 
         if (currentEvent.status === EventStatus.COMPLETED) {
