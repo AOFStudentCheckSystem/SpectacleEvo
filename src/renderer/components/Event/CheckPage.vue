@@ -269,8 +269,16 @@
             })
             this.connectCallbackUnsubscriber = this.smart.onConnect((reader) => {
                 reader.onInsert((card) => {
-                    if (self.pageActive && self.currentEvent && self.isUnlockedEvent(self.currentEvent)) {
-                        self.addRecord(card.atr)
+                    if (card) {
+                        if (card.atr) {
+                            if (self.pageActive && self.currentEvent && self.isUnlockedEvent(self.currentEvent)) {
+                                self.addRecord(card.atr)
+                            }
+                        } else {
+                            console.warn('card.atr=', card.atr)
+                        }
+                    } else {
+                        console.warn('card=', card)
                     }
                 })
                 reader.onError((error) => {

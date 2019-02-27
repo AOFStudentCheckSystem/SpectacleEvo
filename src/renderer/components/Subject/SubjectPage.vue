@@ -99,8 +99,16 @@
                     this.connectCallbackUnsubscriber = this.smart.onConnect((reader) => {
                         console.log(self.currentStudent)
                         reader.onInsert((card) => {
-                            if (self.pageActive && self.currentStudent) {
-                                self.setCardSecret(card.atr)
+                            if (card) {
+                                if (card.atr) {
+                                    if (self.pageActive && self.currentStudent) {
+                                        self.setCardSecret(card.atr)
+                                    }
+                                } else {
+                                    console.warn('card.atr=', card.atr)
+                                }
+                            } else {
+                                console.warn('card=', card)
                             }
                         })
                         reader.onError((error) => {
