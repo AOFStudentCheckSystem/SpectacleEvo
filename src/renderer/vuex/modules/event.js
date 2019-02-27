@@ -340,7 +340,7 @@ const actions = {
         try {
             if (record && record.checkInTime < 0) {
                 play(SoundFX.NOT_GOOD)
-            } else if (record.signUpTime < 0) {
+            } else if (record.signUpTime <= 0) {
                 play(SoundFX.WARN)
             } else {
                 play(SoundFX.SUCCEED)

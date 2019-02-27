@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="item-after">
                                         <span class="badge" style="margin-right: 0.5em"
-                                              :class="props.item.signUpTime >= 0 ? 'color-green' : 'color-grey'">{{props.item.signUpTime >= 0 ? 'Signed Up' : 'Not Signed Up'}}</span>
+                                              :class="props.item.signUpTime > 0 ? 'color-green' : 'color-grey'">{{props.item.signUpTime > 0 ? 'Signed Up' : 'Not Signed Up'}}</span>
                                         <span class="badge"
                                               :class="props.item.checkInTime >= 0 ? 'color-blue' : 'color-red'">{{props.item.checkInTime >= 0 ? 'Checked' : 'Removed'}}</span>
                                     </div>
@@ -156,6 +156,7 @@
             },
             filteredCurrentEventRecords() {
                 const filter = this.filter
+                console.log(this.sortedCurrentEventRecords)
                 return this.filter === '' ? this.sortedCurrentEventRecords : this.sortedCurrentEventRecords.filter((record) => {
                     const student = record.student
                     const fullName = (student.account.firstName + ' ' + student.account.lastName + ' ' + student.account.preferredName).toLowerCase()
@@ -178,7 +179,7 @@
                     this.$store.dispatch('addEventRecord', {
                         record: new ActivityEventRecord({
                             student: student,
-                            signUpTime: -1,
+                            signUpTime: this.getStudentSignUpTime(student),
                             checkInTime: -(moment().unix())
                         })
                     })
@@ -190,7 +191,7 @@
                     this.$store.dispatch('addEventRecord', {
                         record: new ActivityEventRecord({
                             student: student,
-                            signUpTime: -1,
+                            signUpTime: this.getStudentSignUpTime(student),
                             checkInTime: moment().unix()
                         })
                     })
@@ -207,7 +208,7 @@
                         this.$store.dispatch('addEventRecord', {
                             record: new ActivityEventRecord({
                                 student: foundStudent,
-                                signUpTime: -1,
+                                signUpTime: this.getStudentSignUpTime(foundStudent),
                                 checkInTime: toRemove * moment().unix()
                             })
                         })
@@ -223,7 +224,7 @@
                                     self.$store.dispatch('addEventRecord', {
                                         record: new ActivityEventRecord({
                                             student: student,
-                                            signUpTime: -1,
+                                            signUpTime: self.getStudentSignUpTime(student),
                                             checkInTime: toRemove * moment().unix()
                                         })
                                     })
@@ -250,7 +251,7 @@
                                 self.$store.dispatch('addEventRecord', {
                                     record: new ActivityEventRecord({
                                         student: student,
-                                        signUpTime: -1,
+                                        signUpTime: self.getStudentSignUpTime(student),
                                         checkInTime: toRemove * moment().unix()
                                     })
                                 })
@@ -259,6 +260,10 @@
                         })
                     }
                 }
+            },
+            getStudentSignUpTime(student) {
+                //　TODO: go through sortedCurrentEventRecords and return　student signUpTime or -1 if not found
+                return -1
             }
         },
         created() {
