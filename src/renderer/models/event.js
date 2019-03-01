@@ -33,7 +33,12 @@ export class ActivityEventRecord {
     constructor(json) {
         this.student = new Student(json.student)
         // this.event = new Event(json.event)
-        this.signUpTime = json.signUpTime
+
+        if (json.signUpTime === null || json.signUpTime === undefined) {
+            this.signUpTime = -1
+        } else {
+            this.signUpTime = json.signUpTime
+        }
         this.checkInTime = json.checkInTime
     }
 }

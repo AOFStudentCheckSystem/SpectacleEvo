@@ -156,7 +156,7 @@
             },
             filteredCurrentEventRecords() {
                 const filter = this.filter
-                console.log(this.sortedCurrentEventRecords)
+                // console.log(this.sortedCurrentEventRecords)
                 return this.filter === '' ? this.sortedCurrentEventRecords : this.sortedCurrentEventRecords.filter((record) => {
                     const student = record.student
                     const fullName = (student.account.firstName + ' ' + student.account.lastName + ' ' + student.account.preferredName).toLowerCase()
@@ -265,7 +265,8 @@
                 let filteredRecords = this.sortedCurrentEventRecords.filter(e => {
                     return student.idNumber === e.student.idNumber
                 })
-                return filteredRecords.length >= 1 ? filteredRecords[0].student.idNumber : -1
+                console.log('filteredRecords', filteredRecords)
+                return filteredRecords.length >= 1 ? filteredRecords[0].signUpTime : -1
             }
         },
         created() {
