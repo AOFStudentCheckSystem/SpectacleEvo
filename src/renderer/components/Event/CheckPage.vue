@@ -262,8 +262,10 @@
                 }
             },
             getStudentSignUpTime(student) {
-                //　TODO: go through sortedCurrentEventRecords and return　student signUpTime or -1 if not found
-                return -1
+                let filteredRecords = this.sortedCurrentEventRecords.filter(e => {
+                    return student.idNumber === e.student.idNumber
+                })
+                return filteredRecords.length >= 1 ? filteredRecords[0].student.idNumber : -1
             }
         },
         created() {
