@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@codetector/pcsclite": "^0.4.19",
-    "axios": "^0.16.1",
+    "axios": "^0.21.1",
     "font-awesome": "^4.7.0",
     "framework7": "1.6.5",
     "framework7-icons": "^0.9.1",
